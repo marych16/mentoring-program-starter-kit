@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have the 'mentoring-program-starter-kit' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('mentoring-program-starter-kit');
+    expect(app.card.title).toEqual('mentoring-program-starter-kit');
   });
 
   it('should render title', () => {

@@ -1,81 +1,15 @@
 <div class="container">
-  <h1>
-  Magdalena CV
-  </h1>
-  <h2 class="mt-5">
-  About
-  </h2>
-  <p>
-  Magdalena is a beginner but ambitious person who tries to understand Angular and all the things about it. She searches the corners of the Internet for answers, but instead has more questions. Right now, she feels like she has to integrate without knowing what the derivative is. But she does not give up and tries to do and learn as many things as possible :)
-  </p>
-  <h2 class="mt-5">Education</h2>
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            University of Warsaw
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>2022-now</strong> Finance and Accounting
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            High School
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>2019-2022</strong> XL Liceum Ogólnokształcące im. Stefana Żeromskiego w Warszawie
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Primary School
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>2010-2019</strong> Szkoła Podstawowa nr 2 w Milanówku
-          </div>
-        </div>
-      </div>
-    </div>
-  <h2 class="mt-5">Projects</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col-1">#</th>
-        <th scope="col-1">Status</th>
-        <th scope="col-2">Name</th>
-        <th scope="col-8">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="align-middle" scope="row">1</th>
-        <td class="align-middle"><span class="badge text-bg-warning">In progress</span></td>
-        <td class="align-middle">Lowgular Mentoring Program - Entry Level</td>
-        <td>The project involves receiving mentoring support in learning Angular and creating related projects.</td>
-      </tr>
-      <tr>
-        <th class="align-middle" scope="row">2</th>
-        <td class="align-middle"><span class="badge text-bg-success">Done</span></td>
-        <td class="align-middle">Project 2</td>
-        <td>Just the example, I did not do any "IT" projects.</td>
-      </tr>
-      <tr>
-        <th class="align-middle" scope="row">3</th>
-        <td class="align-middle"><span class="badge text-bg-success">Done</span></td>
-        <td class="align-middle">Project 3</td>
-        <td>Just the example, I did not do any "IT" projects.</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card"
+  [style.width]="card.width">
+  <img [src]="card.imgScr"
+    class="card-img-top"
+    alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{ card.title }}</h5>
+    <p class="card-text">{{ card.description }}</p> 
+    <a href="#" class="btn btn-primary" (click)="onClick()">{{ card.buttonFull }}</a>
+    <a href="#" class="btn btn-secondary" (click)="onClick2()" style="margin-left: 5px;">{{ card.buttonRem }}</a>
+    <a href="#" class="btn btn-success" (click)="onClick3()" style="margin-left: 5px;">{{ card.buttonLD }}</a>
+  </div>
+</div>
 </div>
