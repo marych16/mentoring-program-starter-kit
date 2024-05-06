@@ -1,15 +1,40 @@
 <div class="container">
-<div class="card"
-  [style.width]="card.width">
-  <img [src]="card.imgScr"
-    class="card-img-top"
-    alt="Card image">
-  <div class="card-body">
-    <h5 class="card-title">{{ card.title }}</h5>
-    <p class="card-text">{{ card.description }}</p> 
-    <a href="#" class="btn btn-primary" (click)="onClick()">{{ card.buttonFull }}</a>
-    <a href="#" class="btn btn-secondary" (click)="onClick2()" style="margin-left: 5px;">{{ card.buttonRem }}</a>
-    <a href="#" class="btn btn-success" (click)="onClick3()" style="margin-left: 5px;">{{ card.buttonLD }}</a>
-  </div>
-</div>
-</div>
+<h1>Students</h1>
+<table class="table">
+<thead>
+  <tr>
+    <th scope="col-1">#</th>
+    <th scope="col-2">First</th>
+    <th scope="col-3">Last</th>
+    <th scope="col-6">Grades</th>
+  </tr>
+</thead>
+<tbody>
+  @for(student of students; track student.id; let index = $index) {
+    <tr>
+      <th scope="row">{{ index }}</th>
+      <td>{{student.name}}</td>
+      <td>{{student.surname}}</td>
+      <td>
+                @for(grade of student.grades; track grade){
+        @if(grade === 1 || grade === 2) {
+          <span class="badge text-bg-danger ms-1">
+            {{ grade }}
+          </span>
+          }
+          @if(grade === 3) {
+            <span class="badge text-bg-warning ms-1">
+              {{ grade }}
+            </span>
+            }
+          @if(grade === 4 || grade === 5) {
+            <span class="badge text-bg-success ms-1">
+              {{ grade }}
+            </span>
+          }
+        }
+      </td>
+    </tr>
+  }
+</tbody>
+</table>
