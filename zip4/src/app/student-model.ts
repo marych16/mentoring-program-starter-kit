@@ -3,5 +3,4 @@ export interface StudentModel {
   name: string;
   surname: string;
   grades: number[];
-  selected: boolean;
- }
+    }

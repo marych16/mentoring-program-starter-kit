@@ -17,25 +17,18 @@ export class AppComponent {
       name: 'John',
       surname: 'Doe',
       grades: [5, 4, 1],
-      selected: false,
     },
     {
       id: 's-2',
       name: 'Frank',
       surname: 'Sinatra',
       grades: [5, 5, 5],
-      selected: false,
     },
     {
       id: 's-3',
       name: 'Rod',
       surname: 'Stewart',
       grades: [3, 2, 5],
-      selected: false,
     },
   ];
-  
- SelectClick(student: StudentModel) {
-    student.selected= !student.selected;
-  }
 }
