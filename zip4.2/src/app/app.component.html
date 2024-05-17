@@ -1,0 +1,71 @@
+<div class="container">
+<h1>Students</h1>
+<h2>Selected student:
+  @for(student of students; track student.id) {
+    @if(student.selected === true) {
+      <span class="badge text-bg-primary">
+        {{ student.name }}
+        {{ student.surname}}
+      </span>
+      }
+  
+    @else if(student.selected === false) {
+  <span class="badge text-bg-danger">
+    Select Student
+  </span>
+  }
+ }
+</h2>
+<table class="table">
+<thead>
+  <tr>
+    <th scope="col-1">#</th>
+    <th scope="col-2">First</th>
+    <th scope="col-3">Last</th>
+    <th scope="col-3">Grades</th>
+    <th scope="col-3">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  @for(student of students; track student.id; let index = $index) {
+    <tr>
+      <th scope="row">{{ index }}</th>
+      <td>{{student.name}}</td>
+      <td>{{student.surname}}</td>
+      <td>
+      @for(grade of student.grades; track grade){
+        @if(grade < 3) {
+          <span class="badge text-bg-danger ms-1">
+            {{ grade }}
+          </span>
+          }
+          @else if(grade === 3) {
+            <span class="badge text-bg-warning ms-1">
+              {{ grade }}
+            </span>
+            }
+          @else if(grade > 3) {
+            <span class="badge text-bg-success ms-1">
+              {{ grade }}
+            </span>
+          }
+        }
+      </td>
+      <td>
+      @if (student.selected === false) {
+        <a href="#"
+        class="btn btn-success" (click)="SelectClick(student)">
+          Select
+       </a>
+      }
+      @else if (student.selected === true) {
+        <a href="#"
+        class="btn btn-danger" (click)="SelectClick(student)">
+          Unselect
+       </a>
+      }
+      </td>
+    </tr>
+  }
+</tbody>
+</table>
