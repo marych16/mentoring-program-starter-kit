@@ -34,13 +34,8 @@ export class AppComponent {
       selected: false,
     },
   ];
-  selected = false;
-  selectedStudent: StudentModel | null = null;
-
+  
  SelectClick(student: StudentModel) {
-    this.selectedStudent = student;
-  }
-  UnselectClick() {
-    this.selectedStudent = null;
+    student.selected= !student.selected;
   }
 }

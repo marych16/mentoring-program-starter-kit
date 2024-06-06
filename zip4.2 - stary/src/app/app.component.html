@@ -1,18 +1,20 @@
 <div class="container">
 <h1>Students</h1>
 <h2>Selected student:
-  @if(selectedStudent) {
-    <span class="badge text-bg-primary">
-      {{ selectedStudent.name }}
-      {{ selectedStudent.surname}}
-    </span>
+  @for(student of students; track student.id) {
+    @if(student.selected === true) {
+      <span class="badge text-bg-primary">
+        {{ student.name }}
+        {{ student.surname}}
+      </span>
+      }
+  
+    @else if(student.selected === false) {
+  <span class="badge text-bg-danger">
+    Select Student
+  </span>
   }
-  @else {
-    <span class="badge text-bg-danger">
-      Select Student
-    </span>
-  }
-
+ }
 </h2>
 <table class="table">
 <thead>
@@ -50,16 +52,16 @@
         }
       </td>
       <td>
-      @if (student.id === selectedStudent?.id) {
-        <a href="#"
-        class="btn btn-danger" (click)="UnselectClick()">
-          Unselect
-       </a>
-      }
-      @else {
+      @if (student.selected === false) {
         <a href="#"
         class="btn btn-success" (click)="SelectClick(student)">
           Select
+       </a>
+      }
+      @else if (student.selected === true) {
+        <a href="#"
+        class="btn btn-danger" (click)="SelectClick(student)">
+          Unselect
        </a>
       }
       </td>

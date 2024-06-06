@@ -1,46 +1,30 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { StudentModel } from './student-model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, HttpClientModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
 export class AppComponent {
-  students: StudentModel[] = [
-    {
-      id: 's-1',
-      name: 'John',
-      surname: 'Doe',
-      grades: [5, 4, 1],
-      selected: false,
-    },
-    {
-      id: 's-2',
-      name: 'Frank',
-      surname: 'Sinatra',
-      grades: [5, 5, 5],
-      selected: false,
-    },
-    {
-      id: 's-3',
-      name: 'Rod',
-      surname: 'Stewart',
-      grades: [3, 2, 5],
-      selected: false,
-    },
-  ];
-  selected = false;
-  selectedStudent: StudentModel | null = null;
+ categories$: Observable<string[]>;
+ products$: Observable<any[]>;
 
- SelectClick(student: StudentModel) {
-    this.selectedStudent = student;
-  }
-  UnselectClick() {
-    this.selectedStudent = null;
-  }
+ categoriesBadges: { [key: string]: string } = {
+  'electronics': 'badge bg-primary',
+  'jewelery': 'badge bg-secondary',
+  "men's clothing": 'badge bg-success',
+  "women's clothing": 'badge bg-danger'
+ };
+ 
+ constructor(private http:HttpClient) {
+  this.categories$ = this.http.get<string[]>(`https://fakestoreapi.com/products/categories`);
+  this.products$ = this.http.get<any[]>(`https://fakestoreapi.com/products`);
+ }
 }
